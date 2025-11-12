@@ -14,7 +14,7 @@
 <body>
     <h1>Muokkaa ohjetta: </h1>
 
-    <form th:action="@{/saveEdited}" th:object="${recipe}" method="post">
+    <form th:action="@{/saveEdited}" th:object="${editRecipe}" method="post">
         <div>
             <input type="hidden" th:field="*{id}" />
         </div>

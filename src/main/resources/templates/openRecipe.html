@@ -22,7 +22,7 @@
     </div>
 
     <div>
-            <a sec:authorize ="hasAuthority('ADMIN')"><a th:href="@{/editRecipe/{id}(id=${recipe.id})}">Muokkaa ohjetta</a>
+            <a sec:authorize ="hasAuthority('ADMIN')" th:href="@{/edit/{id}(id=${recipe.id})}">Muokkaa ohjetta</a>
             <a sec:authorize ="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${recipe.id})}">Poista ohje</a>
             <a href="/recipelist">← Takaisin listaan</a>
     </div>

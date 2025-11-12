@@ -13,8 +13,17 @@
 <body>
     <form th:action="@{/recipeSearch}" th:object="${recipe}" method="post">
         <input th:field="*{title}" placeholder="Etsi reseptiä nimellä"/>
+       <select name="categoryId">
+        <option value="" th:selected="${selectedCategoryId == null}">Kaikki kategoriat</option>
+        <option th:each="cat : ${categories}"
+                th:value="${cat.id}"
+                th:text="${cat.name}"
+                th:selected="${selectedCategoryId == cat.id}">
+        </option>
+    </select>
         <button type="submit">Hae reseptiä</button>
     </form>
+    
     
     <div th:each="recipe:${foundRecipes}" class="recipeContainer">
         <h1 th:text="${recipe.title}"></h1>
@@ -23,12 +32,12 @@
             <p><strong>Paistoaika:</strong><span th:text="${recipe.bakeTime}"></span></p>
             <p><strong>Ainesosat:</strong><span th:text="${recipe.ingredients}"></span></p>
             <p><strong>Valmistus:</strong><span th:text="${recipe.steps}"></span></p>
-    </div>
 
-    <div>
             <a th:href="@{'/recipe/' + ${recipe.id}}">Avaa resepti</a>
-            <a sec:authorize ="hasAuthority('ADMIN')"><a th:href="@{/editRecipe/{id}(id=${recipe.id})}">Muokkaa ohjetta</a>
-            <a sec:authorize ="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${recipe.id})}">Poista ohje</a>
+            <a sec:authorize ="hasAuthority('ADMIN')" th:href="@{/edit/{id}(id=${recipe.id})}">Muokkaa ohjetta</a>
+            <a sec:authorize ="hasAuthority('ADMIN')" th:href="@{/delete/{id}(id=${recipe.id})}">Poista ohje</a>
+    </div>
+    <div>
             <a href="/recipelist"> ← Takaisin listaan</a>
     </div>
 </body>
