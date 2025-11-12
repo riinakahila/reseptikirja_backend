@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Recipe</title>
+    <link type="text/css" rel="stylesheet"
+          href="/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}" />
+
+    <link type="text/css" rel="stylesheet"
+          href="/css/custom.css"
+          th:href="@{/css/custom.css}" />
+</head>
+<body>
+    <h1>Lisää uusi resepti kirjaan: </h1>
+
+    <form th:action="@{/save}" th:object="${recipe}" method="post">
+        <div>
+            <label>Reseptin nimi:</label>
+            <input type="text" th:field="*{title}" />
+        </div>
+        <div>
+            <label>Valmistusaika:</label>
+            <input type="number" th:field="*{prepTime}"/>
+        </div>
+        <div>
+            <label>Paistoaika:</label>
+            <input type="text" th:field="*{bakeTime}"/>
+        </div>
+        <div>
+            <label>Ainesosat</label>
+            <input type="text" th:field="*{ingredients}" />
+        </div>
+        <div>
+            <label>Valmistusohjeet:</label>
+            <input type="text" th:field="*{steps}" />
+        </div>
+        <p>Category:
+        <select th:field="*{category}" >
+            <option th:each="cat : ${categories}"
+                    th:value="${cat.id}" 
+                    th:text="${cat.name}">
+            </option>
+        </select>
+    </p>
+        
+        <input type="submit" class="btn btn-success" value="Save"></input>
+    </form>
+
+    <a href="/main">Takaisin etusivulle</a>
+    
+    <form action="/logout" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</body>
+</html>

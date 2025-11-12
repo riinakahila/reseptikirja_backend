@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Category list</title>
+    <link type="text/css" rel="stylesheet"
+          href="/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}" />
+
+    <link type="text/css" rel="stylesheet"
+          href="/css/custom.css"
+          th:href="@{/css/custom.css}" />
+</head>
+<body>
+    <h1>Categories</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+        <tr th:each="cat : ${categories}">
+            <td th:text="${cat.id}"></td>
+            <td th:text="${cat.name}"></td>
+        </tr>
+    </table>
+    <br>
+    <a href="/addCategory">Add new category</a><br>
+    <a href="/main">Back to main page</a>
+</body>
+</html>

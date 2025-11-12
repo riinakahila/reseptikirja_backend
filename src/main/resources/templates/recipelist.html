@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Reseptikirja</title>
+     <link type="text/css" rel="stylesheet"
+          href="/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}" />
+    <link type="text/css" rel="stylesheet"
+          href="/css/custom.css"
+          th:href="@{/css/custom.css}" />
+</head>
+<body>
+    <h1>Reseptit</h1>
+    <form th:action="@{/recipeSearch}" th:object="${recipe}" method="get" style="margin-bottom:1rem;">
+        <input th:field="*{title}" placeholder="Hae reseptiä nimellä" />
+        <button type="submit">Hae reseptiä</button>
+    </form>
+    <div class="recipeList">
+    <div th:each="recipe : ${recipes}" class="recipeContainer">
+            <h2 th:text="${recipe.title}" ></h2>
+            <p><strong>Kategoria:</strong><span th:text="${recipe.category.name}"></span></p>
+            <p><strong>Valmistusaika:</strong><span th:text="${recipe.prepTime}"></span></p>
+    <div style="margin-top:10px;">
+            <p><a th:href="@{'/recipe/' + ${recipe.id}}">Avaa resepti</a></p>
+            <span sec:authorize ="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${recipe.id})}">Poista ohje</a></span>
+    </div>
+</div>
+    </div>
+    <div>
+        <a href="/main" style="margin-right:10px;">← Takaisin etusivulle</a>
+        <span sec:authorize="hasAuthority('ADMIN')">
+        <a href="/addRecipe">+ Lisää uusi resepti</a></span>
+    </div>
+</body>
+</html>

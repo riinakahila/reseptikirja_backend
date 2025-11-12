@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Reseptikirja</title>
+    <link type="text/css" rel="stylesheet"
+          href="/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}" />
+    <link type="text/css" rel="stylesheet"
+          href="/css/custom.css"
+          th:href="@{/css/custom.css}" />
+</head>
+<body>
+    <h1 class="h1">Reseptikirja</h1>
+    <h2 class= "h2">Hyvää päivää <i><span sec:authentication="name"></span></i> ja tervetuloa reseptikirjaan!</h2>
+    <div class="main-container">
+        <p><td sec:authorize="hasAuthority ('ADMIN')"><a href="/addRecipe">Lisää uusi resepti</a></td></p>
+        <p><a href="/recipelist">Näytä reseptit</a></p>
+        <p><a href="/categorylist">Näytä kategoriat</a></p>
+        <p><td sec:authorize="hasAuthority('ADMIN')"><a href="/addCategory">Lisää uusi kategoria</a></td></p>
+    </div>
+
+    <form action="/logout" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</body>
+</html>
