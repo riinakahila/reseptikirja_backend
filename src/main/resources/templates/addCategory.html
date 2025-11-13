@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
-    <title>Add Category</title>
+    <title>Lisää kategoria</title>
     <link type="text/css" rel="stylesheet"
           href="/css/bootstrap.min.css"
           th:href="@{/css/bootstrap.min.css}" />
@@ -12,12 +12,12 @@
           th:href="@{/css/custom.css}" />
 </head>
 <body>
-    <h1>Add Category</h1>
+    <h1>Lisää kategoria</h1>
     <form th:action="@{/saveCategory}" th:object="${category}" method="post">
-        <p>Name: <input type="text" th:field="*{name}" /></p>
-        <input type="submit" value="Save"/>
+        <p>Nimi: <input type="text" th:field="*{name}" /></p>
+        <input type="submit" value="Tallenna"/>
     </form>
     <br>
-    <a href="/categorylist">Back to category list</a>
+    <a href="/categorylist">← Takaisin kategorialistaan</a>
 </body>
 </html>

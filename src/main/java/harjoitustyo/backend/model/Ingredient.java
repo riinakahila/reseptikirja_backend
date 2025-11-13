@@ -13,7 +13,7 @@ public class Ingredient {
     @GeneratedValue
     private Long id;
 
-    private String name; //esim maito,voi
+    private String name;
 
     public Ingredient() {
 

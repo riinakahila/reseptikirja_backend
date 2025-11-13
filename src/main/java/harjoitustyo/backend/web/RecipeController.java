@@ -74,7 +74,7 @@ public class RecipeController {
    @PostMapping("/saveEdited")
     public String saveEdited(@ModelAttribute Recipe recipe) {
     recipeRepository.save(recipe);
-    return "redirect:/main";
+    return "redirect:/recipelist";
 
 }
 }

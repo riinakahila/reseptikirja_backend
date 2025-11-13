@@ -35,7 +35,7 @@
             <label>Valmistusohjeet:</label>
             <input type="text" th:field="*{steps}" />
         </div>
-        <p>Category:
+        <p>Kategoria:
         <select th:field="*{category}" >
             <option th:each="cat : ${categories}"
                     th:value="${cat.id}" 
@@ -44,13 +44,13 @@
         </select>
     </p>
         
-        <input type="submit" class="btn btn-success" value="Save"></input>
+        <input type="submit" class="btn btn-success" value="Tallenna"></input>
     </form>
 
-    <a href="/main">Takaisin etusivulle</a>
+    <a href="/main">← Takaisin etusivulle</a>
     
     <form action="/logout" method="post">
-        <input type="submit" value="Sign Out"/>
+        <input type="submit" value="Kirjaudu ulos"/>
     </form>
 </body>
 </html>
